@@ -70,7 +70,7 @@ pub async fn sileo_depiction_route(Path(package_identifier): Path<String>) -> Re
                 
                 SileoDepictionTableButtonView {
                     title: "Support".to_string(),
-                    link_url: format!("https://basepack.co/p/{}/support", package.identifier).to_string(),
+                    link_url: crate::repo_package_support_website_url!(package.identifier).to_string(),
                     fallback_link_url: None,
                     should_open_in_external_app: Some(false),
                     vertical_padding: None,
@@ -132,7 +132,7 @@ pub async fn sileo_depiction_route(Path(package_identifier): Path<String>) -> Re
 
     let result = SileoDepictionTabView {
         header_image_url: Some(package.header_image_url),
-        link_color: Some("#4299e1".to_string()),
+        link_color: Some(crate::repo_metadata::REPO_TINT_COLOR.to_string()),
         background_color: None,
         tabs
     };

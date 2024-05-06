@@ -29,7 +29,7 @@ impl IntoKV for Vec<Package> {
             "Filename": format!("download/{}.deb", &package.identifier),
             "Section": "Tweaks",
             "Description": &description,
-            "Depiction": format!("https://basepack.co/d/{}", &package.identifier),
+            "Depiction": crate::repo_package_depiction_url!(&package.identifier),
             "Icon": &package.icon_url,
             "Name": &package.name,
             "SHA256": &package.hash_sha256,
@@ -40,12 +40,12 @@ impl IntoKV for Vec<Package> {
                 x => x.to_string()
             },
             "Size": &package.size,
-            "SileoDepiction": format!("https://repo.basepack.co/sileo-depictions/{}", &package.identifier),
+            "SileoDepiction": format!("sileo-depictions/{}", &package.identifier),
             "Prefer-Native": "Yes",
             "Header": &package.header_image_url,
             "Previews": &package.screenshots.join(","),
-            "Homepage": format!("https://basepack.co/p/{}", &package.identifier),
-            "Support": format!("https://basepack.co/p/{}/support", &package.identifier),
+            "Homepage": crate::repo_package_details_website_url!(&package.identifier),
+            "Support": crate::repo_package_support_website_url!(&package.identifier),
         };
 
             package_strings.push(package_string);

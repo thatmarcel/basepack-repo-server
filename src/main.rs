@@ -20,6 +20,7 @@ mod helpers;
 mod data;
 mod macros;
 mod sileo;
+pub mod repo_metadata;
 
 #[tokio::main]
 async fn main() {
