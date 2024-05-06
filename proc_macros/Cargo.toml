@@ -1,0 +1,19 @@
+[package]
+name = "basepack_repo_server_proc_macros"
+version = "1.0.0"
+edition = "2021"
+
+[lib]
+name = "basepack_repo_server_proc_macros"
+proc-macro = true
+
+[dependencies.quote]
+workspace = true
+features = ["proc-macro"]
+
+[dependencies.syn]
+workspace = true
+features = ["clone-impls", "derive", "parsing", "printing", "proc-macro"]
+
+[dependencies.proc-macro2]
+version = "1.0.81"

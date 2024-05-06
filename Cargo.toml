@@ -1,0 +1,50 @@
+[workspace]
+members = [
+    "proc_macros",
+    "."
+]
+default-members = [
+    "proc_macros",
+    "."
+]
+
+[workspace.dependencies]
+quote = { version = "1.0.35", default-features = false }
+syn = { version = "2.0.46", default-features = false }
+
+[package]
+name = "basepack_repo_server"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies.basepack_repo_server_proc_macros]
+path = "proc_macros"
+
+[dependencies.erased-serde]
+version = "0.4.4"
+
+[dependencies.serde_json]
+version = "1.0.116"
+
+[dependencies.tokio]
+version = "1.37.0"
+features = ["default", "rt-multi-thread"]
+
+[dependencies.mongodb]
+version = "2.8.2"
+
+[dependencies.axum]
+version = "0.7.5"
+
+[dependencies.bzip2]
+version = "0.4.4"
+features = ["tokio"]
+
+[dependencies.futures]
+version = "0.3.30"
+
+[dependencies.serde]
+version = "1.0.199"
+
+[dependencies.dyn-clone]
+version = "1.0.17"
