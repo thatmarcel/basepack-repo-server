@@ -2,7 +2,7 @@ use futures::StreamExt;
 use mongodb::bson::{doc, Document};
 use serde::Deserialize;
 
-use crate::helpers::database::get_database;
+use crate::helpers::mongo_database::get_mongo_database;
 
 #[derive(Deserialize, Clone, PartialEq)]
 pub struct LegacyPackage {
@@ -73,7 +73,7 @@ pub struct LegacyPackageChangelogEntry {
 
 impl LegacyPackage {
     pub async fn get(package_identifier: &str) -> Option<LegacyPackage> {
-        let database = get_database().await;
+        let database = get_mongo_database().await;
 
         let mut cursor = match database.collection::<LegacyPackage>("packages").find(doc! {
             "id": package_identifier
@@ -100,7 +100,7 @@ impl LegacyPackage {
     }
 
     pub async fn record_download(package_identifier: &str) {
-        let database = get_database().await;
+        let database = get_mongo_database().await;
         
         match database.collection::<Document>("packages").update_one(
             doc! {

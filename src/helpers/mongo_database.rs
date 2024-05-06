@@ -5,7 +5,7 @@ use mongodb::options::ClientOptions;
 
 static mut CLIENT: Option<Client> = None;
 
-pub async fn initialize_database() {
+pub async fn initialize_mongo_database() {
     unsafe {
         let client_options = ClientOptions::parse(
             env::var("MONGO_URL").expect("Missing MongoDB connection string")
@@ -15,7 +15,7 @@ pub async fn initialize_database() {
     }
 }
 
-pub async fn get_database() -> Database {
+pub async fn get_mongo_database() -> Database {
     unsafe {
         let client = CLIENT.as_ref().expect("No database client instance exists");
         client.database("bp-v1")

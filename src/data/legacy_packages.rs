@@ -3,10 +3,10 @@ use mongodb::bson::doc;
 use mongodb::Cursor;
 
 use crate::data::items::legacy_package::LegacyPackage;
-use crate::helpers::database::get_database;
+use crate::helpers::mongo_database::get_mongo_database;
 
 pub async fn get_legacy_packages(featured_only: bool) -> Option<Vec<LegacyPackage>> {
-    let database = get_database().await;
+    let database = get_mongo_database().await;
     
     let query = match featured_only {
         true => doc! {

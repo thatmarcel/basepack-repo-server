@@ -4,7 +4,7 @@ use axum::Router;
 use axum::routing::get;
 use tokio::net::TcpListener;
 
-use crate::helpers::database::initialize_database;
+use crate::helpers::mongo_database::initialize_mongo_database;
 use crate::routes::cydia_icon_route::cydia_icon_route;
 use crate::routes::download_route::download_route;
 use crate::routes::packages_bz2_route::packages_bz2_route;
@@ -24,7 +24,7 @@ pub mod repo_metadata;
 
 #[tokio::main]
 async fn main() {
-    initialize_database().await;
+    initialize_mongo_database().await;
     
     let app = Router::new()
         .route("/", get(root_route))
